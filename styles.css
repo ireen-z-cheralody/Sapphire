@@ -1,27 +1,69 @@
 /* styles.css */
+@font-face {
+    font-family: 'TitleFont';
+    src: url('fonts/title.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'ButtonFont';
+    src: url('fonts/button.ttf') format('truetype');
+}
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #e0f7fa; /* Light blue for dreamy effect */
+    background: url('https://images.alphacoders.com/878/878305.jpg') no-repeat center center fixed;
+    background-color:black;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
 }
 
 .title-screen {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.7); /* Light overlay for dreaminess */
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Adds spacing between the title and button */
 }
 
 h1 {
-    font-size: 3rem;
-    color: #3e8e41; /* Soft green for the title */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'TitleFont', serif;
+    font-size: 7rem;
+    color: #D8777D; /* Soft pinkish tone for the title */
+    text-shadow: 
+        -2px -2px 0 black,  
+         2px -2px 0 black,  
+        -2px  2px 0 black,  
+         2px  2px 0 black, /* Thick black outline */
+        0px 0px 10px rgba(255, 255, 255, 0.4), 
+        0px 0px 20px rgba(255, 255, 255, 0.6); /* Glowing effect */
+    position: relative;
+    display: inline-block;
+    animation: glow 2.5s infinite alternate ease-in-out;
+}
+
+h1 span {
+    display: inline-block;
+    animation: float 1.7s infinite ease-in-out;
+}
+
+/* Make each letter move at a different time */
+h1 span:nth-child(1) { animation-delay: 0.1s; }
+h1 span:nth-child(2) { animation-delay: 0.4s; }
+h1 span:nth-child(3) { animation-delay: 0.2s; }
+h1 span:nth-child(4) { animation-delay: 0.7s; }
+h1 span:nth-child(5) { animation-delay: 0.3s; }
+h1 span:nth-child(6) { animation-delay: 0.5s; }
+h1 span:nth-child(7) { animation-delay: 0s; }
+h1 span:nth-child(8) { animation-delay: 0.6s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); } /* Moves slightly up */
 }
 
 p {
@@ -31,17 +73,81 @@ p {
 }
 
 button {
-    background-color: #3e8e41;
-    color: white;
+    background-color: #da6d75;
+    color: #ffc3c6;
     border: none;
     padding: 15px 30px;
     font-size: 1.5rem;
-    border-radius: 10px;
-    margin-top: 30px;
+    font-family: 'ButtonFont', sans-serif;
+    border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s;
+    width: 200px;
+    text-align: center;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 
+            -2px -2px 0 black,  
+             2px -2px 0 black,  
+            -2px  2px 0 black,  
+             2px  2px 0 black,
+             0px 0px 10px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        text-shadow: 
+            -2px -2px 0 black,  
+             2px -2px 0 black,  
+            -2px  2px 0 black,  
+             2px  2px 0 black,
+             0px 0px 20px rgba(255, 255, 255, 0.6),
+             0px 0px 30px rgba(255, 255, 255, 0.7);
+    }
 }
 
 button:hover {
-    background-color: #2d6a2e;
+    background-color: #cb4c55;
+    text-shadow:
+    0px 0px 10px rgb(255, 255, 255, 0.8), /* White glow */
+    0px 0px 20px rgba(255, 255, 255, 0.7), 
+    0px 0px 30px rgba(255, 255, 255, 0.6); /* Soft glow effect on hover */
+}
+
+/* Container for falling leaves */
+#leaf-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Leaves won’t block clicks */
+    overflow: hidden;
+}
+
+/* Style for individual leaves */
+.leaf {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('leaf.png'); /* Replace with a real leaf image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    animation: fall 10s linear infinite;
+}
+
+/* Falling animation */
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
 }
