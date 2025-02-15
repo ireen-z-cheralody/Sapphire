@@ -11,7 +11,16 @@
         <h1>
             <span>S</span><span>a</span><span>p</span><span>p</span><span>h</span><span>i</span><span>r</span><span>e</span>
         </h1>
-        <button class="button">NEW GAME</button>
+        <button onclick="startGame()">NEW GAME</button>
+
+    <script>
+        function startGame() {
+            document.body.classList.add("fade-out");  // Apply fade effect
+            setTimeout(() => {
+                window.location.href = "start.html";  // Redirect after effect
+            }, 800); // Delay matches animation duration
+        }
+    </script>
         <button class="button">LOAD</button>
         <button class="button">EXIT</button>
     </div>

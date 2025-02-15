@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         leaf.style.left = Math.random() * 100 + "vw";
 
         // Random animation duration (makes some fall faster)
-        const duration = Math.random() * 3 + 5; // Between 5-8 seconds
+        const duration = Math.random() * 8 + 12; // Between 5-8 seconds
         leaf.style.animationDuration = duration + "s";
 
         // Add leaf to container

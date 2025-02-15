@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Page</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body{
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
+    </style>
+</head>
+<body onload="startDialogue()">
+    <div id="dialogue-box" class="dialogue-box hidden">
+        <p>"The forest whispers your name... but do you remember who you are?"</p>
+        <button onclick="closeDialogue()">Continue</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.style.opacity = "1"; // Triggers fade-in effect
+        });
+
+        function startDialogue() {
+            setTimeout(() => {
+                document.getElementById("dialogue-box").classList.remove("hidden");
+            }, 2000); // Show dialogue after 2 seconds
+        }
+
+        function closeDialogue() {
+            document.getElementById("dialogue-box").classList.add("hidden");
+        }
+    </script>
+    
+    <script src="leaves.js"></script>
+</body>
+</html>
